@@ -7,7 +7,7 @@ body {
     --color4: hsla(187, 41%, 94%, 1);
     --color5: hsla(170, 28%, 95%, 1); */
 
-    color1: rgb(170, 129, 5);
+    --color1: rgb(170, 129, 5);
     --color2: rgb(12, 128, 31);
     --color3: rgb(109, 16, 84);
     --color4: rgb(16, 81, 90);
