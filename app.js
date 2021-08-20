@@ -1,8 +1,6 @@
 // import functions and grab DOM elements
-import { compareNumbers, finalNumber } from "./utils.js";
+import { compareNumbers, finalNumber } from './utils.js';
 const myButton = document.getElementById('button');
-const myHints = document.getElementById('hints');
-const highOrLow = document.getElementById('too-high');
 const myChances = document.getElementById('chances');
 const myResults = document.getElementById('results');
 // initialize global state
@@ -15,16 +13,25 @@ let correctNumber = finalNumber();
   // update DOM to reflect the new state
 
 myButton.addEventListener('click', () => {
-    let myInput = document.getElementById('userInput');
-    const myguess = compareNumbers(Number(myInput.value), correctNumber);
-
-    if (myInput.value === correctNumber){
-        return myResults.textContent = 'You Win!';
+    const myInput = document.getElementById('userInput');
+    const myNumberInput = Number(myInput.value);
+    const myGuess = compareNumbers(myNumberInput, correctNumber);
+    
+    if (myNumberInput === correctNumber){
+        myResults.textContent = myGuess;
+        myButton.disabled = true;
+       
         
-    } else if (myInput.value !== correctNumber){
-        chances --;
-        myResults.textContent = 'You lose!';
+    } else {
+        chances--;
+        myResults.textContent = myGuess;
+        myChances.textContent = `You have ${chances} chances remaining.`;
         
 
+    } if (chances === 0){
+        myResults.textContent = 'Game Over!'; 
+        myButton.disabled = true;
+        
     }
 });
+   
